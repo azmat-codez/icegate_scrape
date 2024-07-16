@@ -1,0 +1,54 @@
+<script type="text/javascript" language="javascript">
+    function SubmitForm() {
+        //form = document.getElementById("AirEGMForm");
+        var id = document.igmICESform.location.value;
+        var mbNo = document.igmICESform.mawbNO.value;
+        var captcha = document.igmICESform.captchaResp.value;
+        if (id == "Please Select Location" || isSpecialCharForLoc(id) || isEmpty(id)) {
+            alert("PLEASE SELECT LOCATION");
+            document.getElementById("Pwait").style.display = "none";
+            document.getElementById("SubButton").style.display = "block";
+            return false;
+        }
+        if (mbNo == "") {
+            alert("PLEASE ENTER IGM NO.");
+            return false;
+        } else if (isNaN(mbNo) || isSpecialChar(mbNo) || isWhiteSpace(mbNo)) {
+            alert("PLEASE ENTER VALID IGM NUMBER");
+            return false;
+        } else if (captcha == "") {
+            alert("PLEASE ENTER IMAGE TEXT.");
+            return false;
+        } else {
+            document.getElementById("Pwait").style.display = "block";
+            document.getElementById("SubButton").style.display = "none";
+            document.igmICESform.submit();
+        }
+    }
+
+    function reloadCaptcha() {
+        $('#capimg').attr('src', 'https://enquiry.icegate.gov.in/enquiryatices/CaptchaImg.jpg?_=' + Math.random());
+    }      
+</script>
+
+
+
+<tr>
+    <td> ENTER IMAGE LETTERS</td>
+    <td>
+        <ul class="errorMessage">
+            <li><span>Invalid Code! Please try again!</span></li>
+        </ul>
+        <p><img src="https://enquiry.icegate.gov.in/enquiryatices/CaptchaImg.jpg" id="capimg" border="0" alt="" height="10%" width="50%">
+            <a href="javascript:reloadCaptcha();">
+                <img alt="Reload" src="https://enquiry.icegate.gov.in/enquiryatices/image/reload.gif" height="22px" width="22px">
+            </a>
+        </p>
+        <input type="text" name="captchaResp" size="20" maxlength="10" value="LI3IHp" id="captchaResp" /> <span
+            class="asterix">*</span>
+    </td>
+</tr>
+
+
+
+<!-- https://enquiry.icegate.gov.in/enquiryatices/igmICES_action -->

@@ -1,0 +1,19 @@
+# https://enquiry.icegate.gov.in/enquiryatices/igmICES_action
+
+
+url = "https://enquiry.icegate.gov.in/enquiryatices/airIgmEntry"
+
+response = 
+IGM_loc_Name	"BANGALORE+ACC+(INBLR4)"
+MAWB_NO	"17673198753"
+captchaResp	"LI3IHp"
+
+"write a code to scrapy the site using python"
+
+
+
+
+
+git remote add origin https://github.com/azmat-codez/icegate_scrape.git
+
+git remote add origin https://github.com/yourusername/your-repository.git

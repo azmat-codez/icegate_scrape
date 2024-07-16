@@ -1,0 +1,315 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <script language="JavaScript" type="text/javascript">
+   // Dojo configuration
+    djConfig = {
+        isDebug: false,
+        bindEncoding: "UTF-8"
+          ,baseRelativePath: "/enquiryatices/struts/dojo/"
+          ,baseScriptUri: "/enquiryatices/struts/dojo/"
+         ,parseWidgets : false
+        
+    };
+  </script>
+  <script language="JavaScript" src="/enquiryatices/struts/dojo/struts_dojo.js" type="text/javascript">
+  </script>
+  <script language="JavaScript" src="/enquiryatices/struts/ajax/dojoRequire.js" type="text/javascript">
+  </script>
+  <link href="/enquiryatices/struts/xhtml/styles.css" rel="stylesheet" type="text/css"/>
+  <script language="JavaScript" src="/enquiryatices/struts/utils.js" type="text/javascript">
+  </script>
+  <script language="JavaScript" src="/enquiryatices/struts/xhtml/validation.js" type="text/javascript">
+  </script>
+  <script language="JavaScript" src="/enquiryatices/struts/css_xhtml/validation.js" type="text/javascript">
+  </script>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <meta content="ICEGATE (Indian Customs EDI Gateway) is an e-commerce portal of the Indian Customs which offers services such as e-filing of Bills of Entry (Import Goods Declaration);Shipping Bills (Export Goods Declaration); and   EDI between Customs and its Trade Partners for IGM, EGM, Customs Duty Payment and Drawback Disbursal through electronic messages. " name="description"/>
+  <meta content="ICEGATE, icegate, Indian Customs EDI Gateway,License Status,Track Job Status at ICEAGATE , Check Authorized Dealer Codes available in ICES 1.5, AD Code, BL Status , Check status of shipping bills transmitted to DGFT ,DGFT Shipping Bill Status, Check status of shipping bills transmitted to DGFT, Tracking at ICES, ICEGATE Helpdesk  " name="keywords"/>
+  <title>
+   ICEGATE - AIR IGM At ICES
+  </title>
+  <link href="/css/masterstyle.css" media="screen" rel="stylesheet" title="blue" type="text/css"/>
+  <link href="/css/masterstylegreen.css" media="screen" rel="stylesheet" title="green" type="text/css"/>
+  <link href="/css/masterstyleyellow.css" media="screen" rel="stylesheet" title="yellow" type="text/css"/>
+  <link href="favicon.ico" rel="shortcut icon" type="/image/x-icon"/>
+  <link href="/enquiryatices/css/registration.css" rel="stylesheet" type="text/css"/>
+  <script charset="utf-8" src="/scripts/jquery.min.js" type="text/javascript">
+  </script>
+  <script charset="utf-8" src="/includes/commonscript.js" type="text/javascript">
+  </script>
+  <script charset="utf-8" src="/includes/ajaxticker.js" type="text/javascript">
+  </script>
+  <script language="javascript" src="/enquiryatices/js/validate.js" type="text/javascript">
+  </script>
+  <script language="javascript" type="text/javascript">
+   function SubmitForm() {
+                //form = document.getElementById("AirEGMForm");
+                var id=document.igmICESform.location.value;
+                var mbNo=document.igmICESform.mawbNO.value;
+                var captcha = document.igmICESform.captchaResp.value;
+                if(id=="Please Select Location" || isSpecialCharForLoc(id) || isEmpty(id)){
+                    alert("PLEASE SELECT LOCATION");
+                    document.getElementById("Pwait").style.display="none";
+                    document.getElementById("SubButton").style.display = "block";
+                    return false;
+                }
+                if(mbNo==""){
+                    alert("PLEASE ENTER IGM NO.");
+                    return false;
+                }else if(isNaN(mbNo) || isSpecialChar(mbNo) || isWhiteSpace(mbNo)){
+                    alert("PLEASE ENTER VALID IGM NUMBER");
+                    return false;
+                }else if(captcha==""){
+                    alert("PLEASE ENTER IMAGE TEXT.");
+                    return false;
+                }else{
+                    document.getElementById("Pwait").style.display="block";
+                    document.getElementById("SubButton").style.display = "none";
+                    document.igmICESform.submit();
+                }
+            }
+            
+            function reloadCaptcha(){
+            	  $('#capimg').attr('src', '/enquiryatices/CaptchaImg.jpg?_=' + Math.random());
+                }
+  </script>
+ </head>
+ <body>
+  <div id="wrap">
+   <script language="javascript" src="/includes/HEADICE.js" type="text/javascript">
+   </script>
+   <div id="color-option">
+    <a href="javascript:switch_style('blue')" title="Blue">
+     <img alt="Blue" src="/images/color_nblue.gif"/>
+    </a>
+    <a href="javascript:switch_style('green')" title="Green">
+     <img alt="Green" src="/images/color_green.gif"/>
+    </a>
+    <a href="javascript:switch_style('yellow')" title="Yellow">
+     <img alt="Yellow" src="/images/color_yellow.gif"/>
+    </a>
+   </div>
+   <div class="clear">
+   </div>
+   <div id="content_holder">
+    <div id="sub_leftpanel">
+     <script language="javascript" src="/enquiryatices/js/track_ices.js" type="text/javascript">
+     </script>
+     <script language="javascript" src="/includes/relatedLink.js" type="text/javascript">
+     </script>
+    </div>
+    <div id="sub_content">
+     <div class="breadcrump">
+      <a href="/index.html" target="_parent" title="Home">
+       Home
+      </a>
+      &gt;
+      <a href="/enquiryatices/index.jsp" target="_parent" title="Tracking">
+       Tracking At ICES
+      </a>
+      &gt;
+      <a target="_parent" title="AIR IGM">
+       AIR IGM
+      </a>
+     </div>
+     <h3>
+      AIR IGM ENQUIRY
+     </h3>
+     <div class="content_txt section2">
+      <form action="/enquiryatices/igmICES_action" id="igmICES_action" method="POST" name="igmICESform">
+       <table align="center" id="pagetable">
+        <tr>
+         <th colspan="2">
+          AIR IGM ENQUIRY
+         </th>
+        </tr>
+        <tr>
+         <td style=" text-align: left">
+          SELECT LOCATION
+         </td>
+         <td>
+          <select id="location" name="IGM_loc_Name" style="float: left;">
+           <option value="Please Select Location">
+            Please Select Location
+           </option>
+           <option value="ACC KANNUR (INCNN4)">
+            ACC KANNUR (INCNN4)
+           </option>
+           <option value="ACC MOPA (INGOX4)">
+            ACC MOPA (INGOX4)
+           </option>
+           <option value="AHEMDABAD AIR ACC (INAMD4)">
+            AHEMDABAD AIR ACC (INAMD4)
+           </option>
+           <option value="AFS Kapashera (INBWS6)">
+            AFS Kapashera (INBWS6)
+           </option>
+           <option value="AMRITSAR ACC (INATQ4)">
+            AMRITSAR ACC (INATQ4)
+           </option>
+           <option selected="selected" value="BANGALORE ACC (INBLR4)">
+            BANGALORE ACC (INBLR4)
+           </option>
+           <option value="BHUBANESWAR AIR CARGO (INBBI4)">
+            BHUBANESWAR AIR CARGO (INBBI4)
+           </option>
+           <option value="CALICUT ACC (INCCJ4)">
+            CALICUT ACC (INCCJ4)
+           </option>
+           <option value="CHENNAI AIR CARGO ACC (INMAA4)">
+            CHENNAI AIR CARGO ACC (INMAA4)
+           </option>
+           <option value="COCHIN AIR CARGO ACC (INCOK4)">
+            COCHIN AIR CARGO ACC (INCOK4)
+           </option>
+           <option value="COIMBATORE ACC (INCJB4)">
+            COIMBATORE ACC (INCJB4)
+           </option>
+           <option value="DELHI AIR CARGO ACC (INDEL4)">
+            DELHI AIR CARGO ACC (INDEL4)
+           </option>
+           <option value="GOA ACC (INGOI4)">
+            GOA ACC (INGOI4)
+           </option>
+           <option value="GUWAHATI AIR CARGO (INGAU4)">
+            GUWAHATI AIR CARGO (INGAU4)
+           </option>
+           <option value="HYDERABAD ACC (INHYD4)">
+            HYDERABAD ACC (INHYD4)
+           </option>
+           <option value="INDORE ACC (INIDR4)">
+            INDORE ACC (INIDR4)
+           </option>
+           <option value="JAIPUR ACC (INJAI4)">
+            JAIPUR ACC (INJAI4)
+           </option>
+           <option value="JAMNAGAR AIR CARGO (INJGA4)">
+            JAMNAGAR AIR CARGO (INJGA4)
+           </option>
+           <option value="JAMSHEDPUR ICD (INIXW6)">
+            JAMSHEDPUR ICD (INIXW6)
+           </option>
+           <option value="JANORI ACC (INJNR4)">
+            JANORI ACC (INJNR4)
+           </option>
+           <option value="KOLKATA ACC (INCCU4)">
+            KOLKATA ACC (INCCU4)
+           </option>
+           <option value="LUCKNOW AIR CARGO (INLKO4)">
+            LUCKNOW AIR CARGO (INLKO4)
+           </option>
+           <option value="LUCKNOW AIR CARGO (INLOK4)">
+            LUCKNOW AIR CARGO (INLOK4)
+           </option>
+           <option value="MADURAI AIR CARGO (INIXM4)">
+            MADURAI AIR CARGO (INIXM4)
+           </option>
+           <option value="MANGALORE AIR CARGO (INIXE4)">
+            MANGALORE AIR CARGO (INIXE4)
+           </option>
+           <option value="Maia Riverine Port (INLGL1)">
+            Maia Riverine Port (INLGL1)
+           </option>
+           <option value="NAGPUR AIR CARGO (INNAG4)">
+            NAGPUR AIR CARGO (INNAG4)
+           </option>
+           <option value="PCCCC BANDRA-KURLA COMPLEX (INDPC4)">
+            PCCCC BANDRA-KURLA COMPLEX (INDPC4)
+           </option>
+           <option value="PUNE AIR CARGO (INPNQ4)">
+            PUNE AIR CARGO (INPNQ4)
+           </option>
+           <option value="SAHAR AIR CARGO ACC (INBOM4)">
+            SAHAR AIR CARGO ACC (INBOM4)
+           </option>
+           <option value="SRINAGAR AIR CARGO (INSXR4)">
+            SRINAGAR AIR CARGO (INSXR4)
+           </option>
+           <option value="TIRUCHIRAPALLI AIR CARGO (INTRZ4)">
+            TIRUCHIRAPALLI AIR CARGO (INTRZ4)
+           </option>
+           <option value="TRIVANDRUM ACC (INTRV4)">
+            TRIVANDRUM ACC (INTRV4)
+           </option>
+           <option value="VARANASI AIR CARGO (INVNS4)">
+            VARANASI AIR CARGO (INVNS4)
+           </option>
+           <option value="VISHAKHAPATNAM AIR CARGO (INVTZ4)">
+            VISHAKHAPATNAM AIR CARGO (INVTZ4)
+           </option>
+          </select>
+          <span class="asterix">
+           *
+          </span>
+         </td>
+        </tr>
+        <tr>
+         <td style=" text-align: left">
+          ENTER AWB NUMBER
+         </td>
+         <td>
+          <input id="mawbNO" maxlength="20" name="MAWB_NO" style="float: left; width:80%" type="text" value="61597695990"/>
+          <span class="asterix">
+           *
+          </span>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          ENTER IMAGE LETTERS
+         </td>
+         <td>
+          <ul class="errorMessage">
+           <li>
+            <span>
+             Invalid Code! Please try again!
+            </span>
+           </li>
+          </ul>
+          <p>
+           <img alt="" border="0" height="10%" id="capimg" src="/enquiryatices/CaptchaImg.jpg" width="50%"/>
+           <a href="javascript:reloadCaptcha();">
+            <img alt="Reload" height="22px" src="/enquiryatices/image/reload.gif" width="22px"/>
+           </a>
+          </p>
+          <input id="captchaResp" maxlength="10" name="captchaResp" size="20" type="text" value="ger”"/>
+          <span class="asterix">
+           *
+          </span>
+         </td>
+        </tr>
+        <tr>
+         <td colspan="2">
+          <div id="Pwait" style="display: none;">
+           Please wait....
+          </div>
+          <div id="SubButton" style="display: block;">
+           <input id="SubB" name="Search" onclick="javascript:SubmitForm(); return false;" type="button" value="Submit"/>
+           <input id="Reset" name="Reset" onclick="javascript:location.reload(true);" type="reset" value="Reset"/>
+          </div>
+         </td>
+        </tr>
+        <tr>
+         <td class="ltborder" colspan="2">
+          <p>
+          </p>
+          <p>
+           <span class="asterix">
+            *
+           </span>
+           Mandatory Field.
+          </p>
+         </td>
+        </tr>
+       </table>
+      </form>
+     </div>
+    </div>
+   </div>
+  </div>
+  <script language="javascript" src="/includes/FOOTICE.js" type="text/javascript">
+  </script>
+ </body>
+</html>
